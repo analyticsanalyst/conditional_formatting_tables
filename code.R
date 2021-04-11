@@ -1,9 +1,9 @@
-### load and/or install needed packages
-required_packages <- c('tidyverse', 'gt', 'paletteer', 'Lahman', 'webshot')
-for(p in required_packages){
-      if(!require(p,character.only = TRUE)) install.packages(p, repos = "http://cran.us.r-project.org")
-      library(p,character.only = TRUE)
-}
+### load packages
+library(tidyverse)
+library(gt)
+library(paletteer)
+library(Lahman)
+library(webshot)
 
 ### generate dataset for visual example
 top10_by_hits <- Batting %>% 
@@ -25,6 +25,7 @@ top10_by_hits <- Batting %>%
 columns_vars <- vars(salary_mil, AB, BA, H, HR, X2B, 
                      X3B, SB, BB, SO, RBI, R)
 
+### generate conditional formatting table
 top10_by_hits %>%
       gt() %>%
       data_color(
